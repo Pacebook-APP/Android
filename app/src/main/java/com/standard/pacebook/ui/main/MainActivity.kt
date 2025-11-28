@@ -23,23 +23,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun initBottomNavigation() {
         // Set initial fragment
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.main_fragment_container, HomeFragment())
-            .commit()
+        replaceFragment(HomeFragment(), "홈")
         binding.mainBnv.selectedItemId = R.id.homeFragment
 
         binding.mainBnv.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.communityFragment -> {
-                    replaceFragment(CommunityFragment())
+                    replaceFragment(CommunityFragment(), "커뮤니티")
                     true
                 }
                 R.id.homeFragment -> {
-                    replaceFragment(HomeFragment())
+                    replaceFragment(HomeFragment(), "홈")
                     true
                 }
                 R.id.mypageFragment -> {
-                    replaceFragment(MypageFragment())
+                    replaceFragment(MypageFragment(), "마이페이지")
                     true
                 }
                 else -> false
@@ -47,9 +45,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun replaceFragment(fragment: Fragment) {
+    private fun replaceFragment(fragment: Fragment, title: String) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_fragment_container, fragment)
             .commit()
+        binding.mainTitleTv.text = title
     }
 }
