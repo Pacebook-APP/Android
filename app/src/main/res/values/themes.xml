@@ -5,5 +5,14 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <!--bottom Navigation transparent 뒤에 동그라미를 없앤다-->
+    <style name="BottomNav_NoIndicator" parent="">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="BottomNav.Text" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">11sp</item>
+    </style>
+
     <style name="Theme.Pacebook" parent="Base.Theme.Pacebook" />
 </resources>

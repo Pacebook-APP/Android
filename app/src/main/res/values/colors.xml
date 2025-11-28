@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="signature">#104BD7</color>
+    <color name="corner">#B2C9FF</color>
+
+    <color name="colorPrimary">#104BD7</color>
+    <color name="colorBackground">#F9F9F9</color>
+
+    <color name="colorGrayIcon">#D1D1D1</color>
 </resources>
