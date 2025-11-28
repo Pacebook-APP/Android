@@ -1,7 +1,15 @@
+import java.util.*
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("kotlin-parcelize")
+}
+
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
 }
 
 android {
@@ -16,8 +24,10 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "NAVER_CLIENT_ID", "\"${localProperties.getProperty("NAVER_CLIENT_ID")}\"")
+        buildConfigField("String", "NAVER_CLIENT_SECRET", "\"${localProperties.getProperty("NAVER_CLIENT_SECRET")}\"")
     }
 
     buildFeatures {
@@ -67,4 +77,7 @@ dependencies {
     implementation("com.naver.maps:map-sdk:3.23.0")
 
     implementation("com.google.android.gms:play-services-location:21.0.1")
+
+    // Glide for image loading from URLs
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 }
